@@ -8,6 +8,6 @@ Plusieurs solutions avec plusieurs langages pour le même problème sont disponi
 
 https://adventofcode.com/2015/
 
-Day 1 -> python
-Day 2 -> python, erlang, elixir
-Day 4 -> python, elixir
+  - Day 1 -> python
+  - Day 2 -> python, erlang, elixir
+  - Day 4 -> python, elixir
