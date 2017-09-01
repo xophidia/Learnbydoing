@@ -3,7 +3,6 @@
   chall/1,
   chall2/1,
   open/1,
-  trans/1,
   tr/2,
   work/2
   ]).
@@ -22,12 +21,6 @@ work([H|T], Acc) ->
   Temp = string:split(H, "x", all),
   V = tr(Temp,[]),
   work(T, [chall2(V) | Acc]).
-
-%% Split and convert String to Integer
-
-trans([H|_]) ->
-  Temp = string:split(H, "x", all),
-  tr(Temp,[]).
 
 tr([], Acc) -> lists:reverse(Acc);
 tr([H|T], Acc) when is_list(H) ->
