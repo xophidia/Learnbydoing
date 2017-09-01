@@ -1,7 +1,7 @@
 
 
 
-Une collection d'exercices/solution afin d'apporter un support aux nombreux débutants qui se trouvent, comme je l'ai été, en manque d'exercices avec solution afin de progresser.
+Une collection d'exercices/solutions afin d'apporter un support aux nombreux débutants qui se trouvent, comme je l'ai été, en manque d'exercices avec solutions afin de progresser.
 Plusieurs solutions avec plusieurs langages pour le même problème sont disponibles.
 
 # Adventofcode 2015 #
