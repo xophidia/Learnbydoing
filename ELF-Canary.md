@@ -108,6 +108,8 @@ Pour exploiter le code ci-dessus et contrôler EIP, nous avons besoin de :
 
 - > 28 * "A" + EBP + EIP
 
+Ci-dessous un image de la mémoire après le strcpy. 0xffffd2ac est l'adresse du buffer et nous observons les 28 lettre A puis ebp et eip.
+
 ```
 0xffffd2ac:	0x61616161	0x61616161	0x61616161	0x61616161
 0xffffd2bc:	0x61616161	0x61616161	0x61616161	0xffffd2e8(EBP)
@@ -118,9 +120,12 @@ Pour exploiter le code ci-dessus et contrôler EIP, nous avons besoin de :
 0x565556f3 <+45>:	add    esp,0x10
 ```
 
-## Sur le programme sans protection ##
+## Concernant le programme sans protection ##
+
+Nous provoquons l'écrasement d'eip
 
 ```r aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbcccc```
+
 
 ```
 eax            0x61616161	0x61616161
@@ -135,11 +140,11 @@ eip            0x63636363	0x63636363
 ```
 Nous voyons bien qu'ebp et eip sont contôlés, il ne reste plus qu'à exploiter.
 
-## Sur le programme avec protection ##
+## Concernant le programme avec protection ##
 
 ```r aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbcccc```
 
-Puis à la ligne +106 nous observons la valeur du canary via **x/x $ebp-0xc**
+A la ligne +106 nous observons la valeur du canary via **x/x $ebp-0xc**
 et nous obtenons :
 
 ```
@@ -149,15 +154,15 @@ gdb-peda$ x/wx $ebp-0xc
 
 Le canary étant écrasé, le programme provoque une erreur **__stack_chk_fail_local**.
 
-## Vérification ##
+## Vérification/Contournement ##
 
-Nous relancons le programme :
+Nous relancons le programme avec les mêmes données:
 
 ```
 r aaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbcccc
 ```
 
-puis une pause ligne 30
+puis une pause ligne 30 afin d'obtenir la valeur du canary
 
 ```
 b *0x5655566e
@@ -170,7 +175,7 @@ x/x $edx
 0x19525700
 ```
 
-Au moment de la vérification, nous posons un point d'arrêt ligne 99 :
+Au moment de la vérification, nous posons un point d'arrêt ligne 99 afin de modifier la valeur du registrer afin qu'il corresponde au canary:
 
 ```
 0x565556b3 <+99>:    xor    edx,DWORD PTR gs:0x14
