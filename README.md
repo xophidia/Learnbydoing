@@ -14,5 +14,5 @@ https://adventofcode.com/2015/
 
 # Exercism #
 
-http://exercism.io/exercises/erlang/collatz-conjecture/readme -> Erlang
+http://exercism.io/exercises/erlang/collatz-conjecture/readme -> Erlang  
 http://exercism.io/exercises/erlang/rna-transcription/ -> Erlang
