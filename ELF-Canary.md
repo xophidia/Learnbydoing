@@ -3,7 +3,7 @@
 Ci-dessous le code est vulnérable à un dépassement de tampon. Nous allons par un exemple comprendre le mode de fonctionnement de la protection canary. Pour activer le canary lors de la compilation ajoutez **-fstack-protector**.
 
 Le **canary** est une des nombreuses protections disponibles pour les executables.
-Elle ajoute un nombre aléatoire qui est verifié durant l'exécution. Si la valeur est modifiée le programme finie sur une erreur et rend l'exploitation d'un dépassement de tampon classique inefficace.
+Elle ajoute un nombre aléatoire qui est verifié durant l'exécution. Si la valeur est modifiée le programme fini sur une erreur et rend l'exploitation d'un dépassement de tampon classique inefficace.
 
 ```c
 #include <stdio.h>
