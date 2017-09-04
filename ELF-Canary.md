@@ -108,7 +108,7 @@ Pour exploiter le code ci-dessus et contrôler EIP, nous avons besoin de :
 
 - > 28 * "A" + EBP + EIP
 
-Ci-dessous un image de la mémoire après le strcpy. 0xffffd2ac est l'adresse du buffer et nous observons les 28 lettre A puis ebp et eip.
+Ci-dessous un image de la mémoire après le strcpy. 0xffffd2ac est l'adresse du buffer et nous observons les 28 lettres A puis ebp et eip.
 
 ```
 0xffffd2ac:	0x61616161	0x61616161	0x61616161	0x61616161
