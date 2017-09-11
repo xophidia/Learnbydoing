@@ -1,6 +1,3 @@
-
-
-
 Une collection d'exercices/solutions afin d'apporter un support aux nombreux débutants qui se trouvent, comme je l'ai été, en manque d'exercices avec solutions afin de progresser.
 Plusieurs solutions avec plusieurs langages pour le même problème sont disponibles.
 
@@ -22,3 +19,7 @@ https://exploit-exercises.com/protostar/ -> Stack 0-6 -> Assembleur
 
 # Divers #
 Fonctionnement de la protection canary sur les binaires ELF -> C / Assembleur
+
+# Livres #
+
+ - Erlang Programming - a Concurrent Approach to Software Development (Francesco Cesarini, Simon Thompson)
