@@ -15,7 +15,7 @@ http://exercism.io/exercises/erlang/collatz-conjecture/readme -> Erlang
 http://exercism.io/exercises/erlang/rna-transcription/ -> Erlang
 
 # Protostar #
-https://exploit-exercises.com/protostar/ -> Stack 0-6 -> Assembleur
+https://exploit-exercises.com/protostar/ -> Stack 0-7 -> Assembleur
 
 # Divers #
 Fonctionnement de la protection canary sur les binaires ELF -> C / Assembleur
